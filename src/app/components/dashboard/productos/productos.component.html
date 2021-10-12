@@ -1,0 +1,85 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Productos</span>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" routerLink="/dashboard/crear-producto">Agregar</button>
+  </mat-toolbar>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="idProducto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.idProducto}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombreProducto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreProducto}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="proveedor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor </th>
+        <td mat-cell *matCellDef="let element"> {{element.proveedor}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cantidadPorUnidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Presentacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.cantidadPorUnidad}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="precioUnidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+        <td mat-cell *matCellDef="let element"> {{element.precioUnidad}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="unidadesEnExistencia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidades </th>
+        <td mat-cell *matCellDef="let element"> {{element.unidadesEnExistencia}} </td>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <a class="pointer" (click)="infoItem(element.idProducto)" matTooltip="Ver">
+            <mat-icon>search</mat-icon>
+          </a>
+          <a class="pointer" (click)="ediItem(element.idProducto)"style="color: #1f516f;" matTooltip="Editar">    
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a class="pointer" (click)="deleteItem(element.idProducto)" style="color: #e15639;" matTooltip="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+
+</div>

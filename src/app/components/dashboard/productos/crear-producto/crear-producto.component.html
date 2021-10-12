@@ -1,0 +1,71 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Nuevo Producto</span>
+        <div class="example-spacer"></div>        
+    </mat-toolbar>
+    <mat-card style="margin-top: 10px;">
+    <form [formGroup]="form" (ngSubmit)="addItem()">
+        <mat-grid-list cols="4" rowHeight="70px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="nombre">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="3" [rowspan]="7">
+                <img src="./assets/img/user.png" width="250" alt="">
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                    <mat-label>Presentacion</mat-label>
+                    <input matInput autocomplete="off" formControlName="presen">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                    <mat-label>Precio</mat-label>
+                    <input matInput autocomplete="off" formControlName="precio" type="number" placeholder="0.00" class="right-align">
+                    <span matPrefix>S/&nbsp;</span>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select formControlName="catego">
+                      <mat-option *ngFor="let i of category" [value]="i.value">
+                        {{ i.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                    <mat-label>Proveedor</mat-label>
+                    <mat-select formControlName="provee">
+                      <mat-option *ngFor="let i of proveedor" [value]="i.value">
+                        {{ i.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput autocomplete="off" formControlName="cantid" type="number" placeholder="0" class="right-align">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <button mat-raised-button routerLink="/dashboard/productos" style="margin-right: 20px;">Volver</button>
+                <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+            </mat-grid-tile>
+        </mat-grid-list>  
+          
+    </form>
+    </mat-card>
+</div>    
+

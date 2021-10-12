@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="card">
+        <div class="headers" *ngIf="item | async as product">
+            <h2>Detalle de: {{product.nombreProducto}}</h2>
+            <hr>
+            <h4>Codigo: {{product.idProducto}}</h4>            
+            <h4>Categoria: {{product.categoria}}</h4>
+            <h4>Proveedor: {{product.proveedor}}</h4>
+            <h4>Precio: {{product.precioUnidad}}</h4>
+        </div>
+    </div>
+
+    <button class="btn btn-info" (click)="onBack()">Back</button>
+</div>
